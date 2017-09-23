@@ -1811,15 +1811,15 @@ bool IsInitialBlockDownload()
     if (lockIBDState)
         return false;
     if (fImporting || fReindex)
-        return true;
+        return false;  //true
     LOCK(cs_main);
     const CChainParams& chainParams = Params();
     if (fCheckpointsEnabled && chainActive.Height() < Checkpoints::GetTotalBlocksEstimate(chainParams.Checkpoints()))
-        return true;
+        return false; //True
     bool state = (chainActive.Height() < pindexBestHeader->nHeight - 24 * 6 ||
             std::max(chainActive.Tip()->GetBlockTime(), pindexBestHeader->GetBlockTime()) < GetTime() - chainParams.MaxTipAge());
     if (!state)
-        lockIBDState = true;
+        lockIBDState = false; //true
     return state;
 }
 

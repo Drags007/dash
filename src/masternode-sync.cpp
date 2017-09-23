@@ -48,7 +48,7 @@ bool CMasternodeSync::CheckNodeHeight(CNode* pnode, bool fDisconnectStuckNodes)
 
 bool CMasternodeSync::IsBlockchainSynced(bool fBlockAccepted)
 {
-    static bool fBlockchainSynced = false;
+    static bool fBlockchainSynced = true;
     static int64_t nTimeLastProcess = GetTime();
     static int nSkipped = 0;
     static bool fFirstBlockAccepted = false;
@@ -263,7 +263,7 @@ void CMasternodeSync::ProcessTick()
             /*
                 Resync if we lost all masternodes from sleep/wake or failed to sync originally
             */
-            if(nMnCount == 0) {
+            if(nMnCount == -1) {
                 LogPrintf("CMasternodeSync::ProcessTick -- WARNING: not enough data, restarting sync\n");
                 Reset();
             } else {

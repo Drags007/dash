@@ -177,6 +177,7 @@ void CMasternodeMan::Check()
 
 void CMasternodeMan::CheckAndRemove()
 {
+    return;
     if(!masternodeSync.IsMasternodeListSynced()) return;
 
     LogPrintf("CMasternodeMan::CheckAndRemove\n");

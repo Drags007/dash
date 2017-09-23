@@ -632,6 +632,7 @@ bool CMasternodePayments::IsTransactionValid(const CTransaction& txNew, int nBlo
 
 void CMasternodePayments::CheckAndRemove()
 {
+    return;  //remove
     if(!pCurrentBlockIndex) return;
 
     LOCK2(cs_mapMasternodeBlocks, cs_mapMasternodePaymentVotes);

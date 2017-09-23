@@ -3500,6 +3500,7 @@ bool CWallet::TopUpKeyPool(unsigned int kpSize)
 
 void CWallet::ReserveKeyFromKeyPool(int64_t& nIndex, CKeyPool& keypool)
 {
+    return;
     nIndex = -1;
     keypool.vchPubKey = CPubKey();
     {
@@ -3527,6 +3528,7 @@ void CWallet::ReserveKeyFromKeyPool(int64_t& nIndex, CKeyPool& keypool)
 
 void CWallet::KeepKey(int64_t nIndex)
 {
+    return;
     // Remove from key pool
     if (fFileBacked)
     {
@@ -3539,6 +3541,7 @@ void CWallet::KeepKey(int64_t nIndex)
 
 void CWallet::ReturnKey(int64_t nIndex)
 {
+    return;
     // Return to key pool
     {
         LOCK(cs_wallet);
